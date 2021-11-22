@@ -2,7 +2,7 @@
 ## Prerequisites
 ### Packages
 ```
-apt install python3.9 python3-pip tor
+sudo apt install python3.9 python3-pip tor
 ```
 ```
 pip3 install pipenv
@@ -10,7 +10,7 @@ pip3 install pipenv
 ### Services
 `tor` service must be running if you want to use a `tor` session.
 ```
-systemctl start tor
+sudo systemctl start tor
 systemctl status tor
 ```
 ```
