@@ -41,8 +41,10 @@ def try_loading(session: webdriver.Chrome, url, timeout: float = 30, is_check_to
 
 if __name__ == "__main__":
     normal_session = initiate_browser()
+    print('Normal session started.')
     try_loading(normal_session, common.Constants.prohibited_url, is_check_tor=True)
 
     # https://www.torproject.org/download/languages/
+    print('\nTor session started.')
     tor_session = initiate_browser(is_tor_session=True)
     try_loading(tor_session, common.Constants.prohibited_url, is_check_tor=True)
