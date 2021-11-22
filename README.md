@@ -32,7 +32,7 @@ class Constants:
 ## Install
 Clone the repository.
 ```
-git pull https://github.com/hsseek/proxy-session
+git clone https://github.com/hsseek/proxy-session
 cd proxy-session
 ```
 Build the virtual environment using `pipenv`.
