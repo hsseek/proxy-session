@@ -46,7 +46,7 @@ pip3 install requests pysocks selenium beautifulsoup4
 ```
 
 ## Run
-Run the script using on the virtual environment using `pipenv run` or `pipenv shell`.
+Run the script on the `pipenv` virtual environment using `pipenv run` or `pipenv shell`.
 ```
 pipenv run python3 requests_session.py
 ```
