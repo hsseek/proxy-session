@@ -2,16 +2,16 @@
 ## Prerequisites
 ### Packages
 ```
-sudo apt install python3.9 python3-pip tor
+apt install python3.9 python3-pip tor
 ```
 ```
-sudo pip3 install pipenv
+pip3 install pipenv
 ```
 ### Services
 `tor` service must be running if you want to use a `tor` session.
 ```
-sudo systemctl start tor
-sudo systemctl status tor
+systemctl start tor
+systemctl status tor
 ```
 ```
 ● tor.service - Anonymizing overlay network for TCP (multi-instance-master)
@@ -25,6 +25,7 @@ sudo systemctl status tor
 To use Selenium Chrome emulator, chromedriver must be downloaded at [download page](https://chromedriver.chromium.org/downloads).
 Also, you must specify its path in `common.py`.
 ```
+# common.py
 class Constants:
     DRIVER_PATH = '/path/to/chromedriver'
 ```
