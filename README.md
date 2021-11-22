@@ -22,7 +22,7 @@ systemctl status tor
         CPU: 1ms
 ```
 ### ChromeDriver
-To use Selenium Chrome emulator, chromedriver must be downloaded at [download page](https://chromedriver.chromium.org/downloads).
+To use Selenium Chrome emulator, chromedriver must be downloaded from the [download page](https://chromedriver.chromium.org/downloads).
 Also, you must specify its path in `common.py`.
 ```
 # common.py
@@ -40,7 +40,7 @@ Build the virtual environment using `pipenv`.
 ```
 pipenv install
 ```
-Otherwise, you can install the following `pip` packages manually _(Not recommended)_.
+_Otherwise, you can install the following `pip` packages manually(Not recommended)_.
 ```
 pip3 install requests pysocks selenium beautifulsoup4
 ```
@@ -48,7 +48,8 @@ pip3 install requests pysocks selenium beautifulsoup4
 ## Run
 Run the script using on the virtual environment using `pipenv run` or `pipenv shell`.
 ```
-cd proxy-session
 pipenv run python3 requests_session.py
+```
+```
 pipenv run python3 selenium_session.py
 ```
