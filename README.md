@@ -1,12 +1,14 @@
 # Getting started
 ## Prerequisites
+### Packages
 ```
 sudo apt install python3.9 python3-pip tor
 ```
 ```
 sudo pip3 install pipenv
 ```
-Tor service must be running if you want to use a tor session.
+### Services
+`tor` service must be running if you want to use a `tor` session.
 ```
 sudo systemctl start tor
 sudo systemctl status tor
@@ -18,6 +20,13 @@ sudo systemctl status tor
     Process: 971 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
    Main PID: 971 (code=exited, status=0/SUCCESS)
         CPU: 1ms
+```
+### ChromeDriver
+To use Selenium Chrome emulator, chromedriver must be downloaded at [download page](https://chromedriver.chromium.org/downloads).
+Also, you must specify its path in `common.py`.
+```
+class Constants:
+    DRIVER_PATH = '/path/to/chromedriver'
 ```
 
 ## Install
