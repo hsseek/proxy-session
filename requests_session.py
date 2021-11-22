@@ -20,7 +20,7 @@ def get_free_proxies():
     return proxies
 
 
-def get_proxy_session(sampling_url: str):
+def get_proxy_session(sampling_url: str, is_print_exception: bool = False):
     timeout = 10
     session = requests.session()
     try:
@@ -28,18 +28,22 @@ def get_proxy_session(sampling_url: str):
         if code == 200:
             print('The url is accessible.')
             return session
-    except Exception as proxy_exception:
-        print('Error: Cannot load %s.\n%s' % (sampling_url, proxy_exception))
+    except Exception as normal_session_exception:
+        print('Error: Cannot load %s.' % sampling_url)
+        if is_print_exception:
+            print(normal_session_exception)
         free_proxy_list = get_free_proxies()
         for i, proxy in enumerate(free_proxy_list):
             try:
                 session.proxies = {'http': 'http://' + proxy,
                                    'https://': 'https://' + proxy}
                 if session.get(sampling_url, timeout=timeout).status_code == 200:
-                    print('%s worked.(trial %d) ' % (proxy, i + 1))
+                    print('%s worked.\t(trial %d) ' % (proxy, i + 1))
                     return session
-            except Exception as e:
-                print('%s failed. %s' % (proxy, e))
+            except Exception as proxy_exception:
+                print('%s failed.\t\t(%d/%d)' % (proxy.split(':')[0], i + 1, len(free_proxy_list)))
+                if is_print_exception:
+                    print(proxy_exception)
 
 
 def get_tor_session():
@@ -70,6 +74,7 @@ def try_loading(session: requests.Session, url, timeout: float = 5):
 
 
 if __name__ == "__main__":
+    print('Try loading %s\n' % common.Constants.prohibited_url)
     normal_session = requests.session()
     print('Original IP address: %s' % get_ip(normal_session))
     try_loading(normal_session, common.Constants.prohibited_url)
@@ -82,7 +87,6 @@ if __name__ == "__main__":
     print('Try loading with via a proxy server.')
     proxy_session = get_proxy_session(common.Constants.prohibited_url)
     if proxy_session is not None:
-        print('Proxy IP address: %s' % get_ip(tor_session))
         try_loading(proxy_session, common.Constants.prohibited_url)
     else:
         print('Error: Cannot find working proxy for the url.')
